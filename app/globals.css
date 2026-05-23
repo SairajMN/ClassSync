@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-outfit: 'Outfit', sans-serif;
+  --font-plus-jakarta: 'Plus Jakarta Sans', sans-serif;
+  
+  --background: 224 71% 4%;
+  --foreground: 213 31% 91%;
+  
+  --card: 224 71% 4%;
+  --card-foreground: 213 31% 91%;
+  
+  --popover: 224 71% 4%;
+  --popover-foreground: 213 31% 91%;
+  
+  --primary: 263.4 70% 50.4%;
+  --primary-foreground: 210 20% 98%;
+  
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 20% 98%;
+  
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 20% 98%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 20% 98%;
+  
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 263.4 70% 50.4%;
+  
+  --radius: 0.75rem;
+}
+
+body {
+  font-family: var(--font-plus-jakarta);
+  color: hsl(var(--foreground));
+  background-color: #030712;
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(263,70%,20%,0.2) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(220,70%,15%,0.25) 0, transparent 50%),
+    radial-gradient(at 50% 100%, hsla(250,70%,12%,0.2) 0, transparent 50%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.15), inset 0 0 12px rgba(255, 255, 255, 0.02);
+  transform: translateY(-2px);
+}
+
+/* Glass inputs */
+.glass-input {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+.glass-input:focus {
+  outline: none;
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+  background: rgba(15, 23, 42, 0.8);
+}
+
+/* 3D Perspective Rules */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Soft Edge Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.6);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.5deg); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(-0.5deg); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.3)); }
+  50% { opacity: 0.8; filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.6)); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 7s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* FullCalendar Styling Overrides for Dark Glass Theme */
+.fc {
+  --fc-border-color: rgba(255, 255, 255, 0.08) !important;
+  --fc-daygrid-event-dot-width: 8px !important;
+  font-family: var(--font-plus-jakarta) !important;
+}
+
+.fc-theme-standard td, .fc-theme-standard th {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.fc-col-header-cell {
+  background: rgba(139, 92, 246, 0.05) !important;
+  padding: 10px 0 !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: #a78bfa;
+}
+
+.fc-day-today {
+  background: rgba(139, 92, 246, 0.08) !important;
+}
+
+.fc-event {
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 2px 6px !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease !important;
+}
+
+.fc-event:hover {
+  transform: scale(1.02) translateY(-1px);
+  filter: brightness(1.15);
+}
+
+.fc-header-toolbar {
+  margin-bottom: 1.5rem !important;
+}
+
+.fc-button {
+  background: rgba(15, 23, 42, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: #e2e8f0 !important;
+  font-weight: 500 !important;
+  text-transform: capitalize !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.fc-button:hover {
+  background: rgba(139, 92, 246, 0.2) !important;
+  border-color: rgba(139, 92, 246, 0.4) !important;
+}
+
+.fc-button-active {
+  background: rgba(139, 92, 246, 0.6) !important;
+  border-color: rgba(139, 92, 246, 0.8) !important;
+  color: #fff !important;
+}
+
+.fc-daygrid-day-number {
+  color: #94a3b8 !important;
+  font-weight: 500 !important;
+  font-size: 0.85rem !important;
+  padding: 6px !important;
+}
+
+.fc-timegrid-slot-label {
+  font-size: 0.75rem !important;
+  color: #94a3b8 !important;
+}

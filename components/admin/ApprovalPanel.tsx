@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Booking } from '@/types';
 import {
@@ -24,7 +24,7 @@ export default function ApprovalPanel() {
   const [selectedRejectId, setSelectedRejectId] = useState<string | null>(null);
   const [rejectReason, setRejectReason] = useState('');
 
-  const fetchPendingBookings = async () => {
+  const fetchPendingBookings = useCallback(async () => {
     setLoading(true);
     try {
       const { data, error } = await supabase
@@ -48,11 +48,11 @@ export default function ApprovalPanel() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [supabase]);
 
   useEffect(() => {
     fetchPendingBookings();
-  }, []);
+  }, [fetchPendingBookings]);
 
   const handleApprove = async (id: string) => {
     try {

@@ -4,6 +4,7 @@ import { useNotificationStore } from '@/store/notification.store';
 import { useAuthStore } from '@/store/auth.store';
 import { toast } from 'sonner';
 import { Notification } from '@/types';
+import { RealtimePostgresChangesPayload } from '@supabase/supabase-js';
 
 export function useRealtimeNotifications() {
   const supabase = createClient();
@@ -39,7 +40,7 @@ export function useRealtimeNotifications() {
           table: 'notifications',
           filter: `user_id=eq.${profile.id}`,
         },
-        (payload) => {
+        (payload: RealtimePostgresChangesPayload<Notification>) => {
           const newNotif = payload.new as Notification;
           addNotification(newNotif);
 

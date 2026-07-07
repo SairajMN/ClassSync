@@ -171,7 +171,7 @@ export default function BookingForm() {
           {step === 1 && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 0, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               className="space-y-4"
             >
@@ -226,7 +226,7 @@ export default function BookingForm() {
           {step === 2 && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 0, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               className="space-y-4"
             >
@@ -306,7 +306,7 @@ export default function BookingForm() {
           {step === 3 && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 0, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               className="space-y-4"
             >
@@ -385,7 +385,7 @@ export default function BookingForm() {
           {step === 4 && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 0, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               className="space-y-5"
             >
